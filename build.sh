@@ -13,9 +13,7 @@ python manage.py collectstatic --noinput
 python manage.py migrate --noinput
 
 # Import articles from JSON
-python manage.py import_articles
+python manage.py import_articles || true
 
-# Create superuser if environment variables are set
-if [ -n "$DJANGO_SUPERUSER_USERNAME" ] && [ -n "$DJANGO_SUPERUSER_PASSWORD" ] && [ -n "$DJANGO_SUPERUSER_EMAIL" ]; then
-    python manage.py createsuperuser --noinput || true
-fi
+# Create superuser using custom command
+python manage.py create_admin
