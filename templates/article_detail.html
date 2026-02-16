@@ -167,7 +167,7 @@ if (likeBtn) {
     const btn = this;
     const csrfToken = document.querySelector('[name="csrfmiddlewaretoken"]').value;
     
-    fetch(`/like-article/${articleId}/`, {
+    fetch(`/site/like-article/${articleId}/`, {
       method: 'POST',
       headers: {
         'X-CSRFToken': csrfToken
@@ -211,7 +211,7 @@ if (saveBtn) {
     const btn = this;
     const csrfToken = document.querySelector('[name="csrfmiddlewaretoken"]').value;
     
-    fetch(`/save-article/${articleId}/`, {
+    fetch(`/site/save-article/${articleId}/`, {
       method: 'POST',
       headers: {
         'X-CSRFToken': csrfToken
