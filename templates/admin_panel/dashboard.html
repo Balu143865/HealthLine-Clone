@@ -28,10 +28,6 @@
     font-weight: 600;
     color: var(--admin-text-dark);
 }
-/* Special container for horizontal bar chart - needs more height */
-.chart-container.bar-chart {
-    height: 280px;
-}
 @media (max-width: 992px) {
     .chart-grid {
         grid-template-columns: 1fr;
@@ -40,9 +36,6 @@
 @media (max-width: 768px) {
     .chart-container {
         height: 250px;
-    }
-    .chart-container.bar-chart {
-        height: 320px;
     }
     .chart-grid {
         gap: 16px;
@@ -59,9 +52,6 @@
 @media (max-width: 480px) {
     .chart-container {
         height: 220px;
-    }
-    .chart-container.bar-chart {
-        height: 280px;
     }
     .chart-card {
         padding: 10px;
@@ -165,7 +155,7 @@
     <!-- Top Viewed Articles -->
     <div class="chart-card">
         <h3>Top Viewed Articles</h3>
-        <div class="chart-container bar-chart">
+        <div class="chart-container">
             <canvas id="viewsChart"></canvas>
         </div>
     </div>
@@ -349,50 +339,75 @@ new Chart(statusCtx, {
     }
 });
 
-// Top Viewed Articles Chart
+// Top Viewed Articles Chart - Line Graph with Trend
 const viewsCtx = document.getElementById('viewsChart').getContext('2d');
 new Chart(viewsCtx, {
-    type: 'bar',
+    type: 'line',
     data: {
         labels: {{ top_articles_titles|safe }},
         datasets: [{
             label: 'Views',
             data: {{ top_articles_views }},
-            backgroundColor: 'rgba(0, 102, 204, 0.8)',
-            borderRadius: 4
+            borderColor: '#0066cc',
+            backgroundColor: 'rgba(0, 102, 204, 0.1)',
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: '#0066cc',
+            pointBorderColor: '#fff',
+            pointBorderWidth: 2,
+            pointRadius: 6,
+            pointHoverRadius: 8
         }]
     },
     options: {
-        indexAxis: 'y',
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
             legend: {
                 display: false
+            },
+            tooltip: {
+                callbacks: {
+                    title: function(context) {
+                        // Show full title in tooltip
+                        return context[0].label;
+                    }
+                }
             }
         },
         scales: {
-            x: {
+            y: {
                 beginAtZero: true,
                 ticks: {
                     font: {
                         size: window.innerWidth < 480 ? 10 : 12
                     }
+                },
+                grid: {
+                    color: 'rgba(0, 0, 0, 0.05)'
                 }
             },
-            y: {
+            x: {
                 ticks: {
                     font: {
-                        size: window.innerWidth < 480 ? 10 : 12
+                        size: window.innerWidth < 480 ? 9 : 11
                     },
+                    maxRotation: 45,
+                    minRotation: 45,
                     callback: function(value, index, values) {
                         const label = this.getLabelForValue(value);
                         // Truncate long labels on mobile
-                        if (window.innerWidth < 480 && label.length > 15) {
+                        if (window.innerWidth < 480 && label.length > 12) {
+                            return label.substring(0, 12) + '...';
+                        }
+                        if (label.length > 15) {
                             return label.substring(0, 15) + '...';
                         }
                         return label;
                     }
+                },
+                grid: {
+                    display: false
                 }
             }
         }
