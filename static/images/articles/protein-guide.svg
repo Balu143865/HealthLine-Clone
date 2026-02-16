@@ -1,0 +1,7 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#E8F5E9"/>
+  <circle cx="400" cy="180" r="80" fill="#00A86B" opacity="0.3"/>
+  <rect x="360" y="140" width="80" height="80" rx="8" fill="#00A86B" opacity="0.4"/>
+  <text x="400" y="310" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#00A86B">Protein Guide</text>
+  <text x="400" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#666">Nutrition Article</text>
+</svg>

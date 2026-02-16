@@ -1,0 +1,8 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#E8EAF6"/>
+  <circle cx="400" cy="180" r="80" fill="#3F51B5" opacity="0.3"/>
+  <circle cx="400" cy="180" r="50" fill="#3F51B5" opacity="0.4"/>
+  <text x="400" y="195" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#3F51B5" opacity="0.6">$</text>
+  <text x="400" y="310" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#303F9F">Financial Wellness</text>
+  <text x="400" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#666">Lifestyle Article</text>
+</svg>

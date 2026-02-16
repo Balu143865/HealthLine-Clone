@@ -1,0 +1,24 @@
+{% extends 'admin_panel/base.html' %}
+
+{% block title %}Delete Article{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Delete Article</h1>
+</div>
+
+<div class="form-container">
+    <div class="confirm-delete">
+        <p>Are you sure you want to delete the article <strong>"{{ article.title }}"</strong>?</p>
+        <p class="text-muted">This action cannot be undone.</p>
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-danger">Yes, Delete Article</button>
+                <a href="{% url 'admin_panel:article_list' %}" class="btn btn-ghost">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore fitness articles covering workouts, strength training, yoga, running, and recovery. Expert advice for all fitness levels.">
+  <title>Fitness Articles - Healthline Clone</title>
+  
+  <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="../../index.html" class="header-logo">
+        <svg class="header-logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="#00A86B" stroke-width="3"/>
+          <path d="M20 8C20 8 12 14 12 22C12 26.4183 15.5817 30 20 30C24.4183 30 28 26.4183 28 22C28 14 20 8 20 8Z" fill="#00A86B"/>
+          <path d="M20 14V26M16 20H24" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Healthline<span>Clone</span>
+      </a>
+      
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="nutrition.html" class="nav-link">Nutrition</a></li>
+          <li class="nav-item"><a href="fitness.html" class="nav-link active">Fitness</a></li>
+          <li class="nav-item"><a href="mental-health.html" class="nav-link">Mental Health</a></li>
+          <li class="nav-item"><a href="wellness.html" class="nav-link">Wellness</a></li>
+          <li class="nav-item"><a href="conditions.html" class="nav-link">Conditions</a></li>
+          <li class="nav-item"><a href="lifestyle.html" class="nav-link">Lifestyle</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header-search">
+        <button class="header-search-toggle" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="M21 21l-4.35-4.35"/>
+          </svg>
+        </button>
+        <form class="header-search-form search-form" action="../search-results.html" method="GET">
+          <input type="search" name="q" class="header-search-input" placeholder="Search articles..." autocomplete="off">
+          <div class="search-suggestions"></div>
+        </form>
+      </div>
+      
+      <div class="header-auth" id="header-auth">
+        <a href="../signin.html" class="btn btn-outline btn-sm">Sign In</a>
+        <a href="../signup.html" class="btn btn-primary btn-sm">Sign Up</a>
+      </div>
+      
+      <button class="mobile-menu-toggle" aria-label="Menu"><span></span></button>
+    </div>
+    
+    <nav class="mobile-nav">
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item"><a href="nutrition.html" class="mobile-nav-link">Nutrition</a></li>
+        <li class="mobile-nav-item"><a href="fitness.html" class="mobile-nav-link">Fitness</a></li>
+        <li class="mobile-nav-item"><a href="mental-health.html" class="mobile-nav-link">Mental Health</a></li>
+        <li class="mobile-nav-item"><a href="wellness.html" class="mobile-nav-link">Wellness</a></li>
+        <li class="mobile-nav-item"><a href="conditions.html" class="mobile-nav-link">Conditions</a></li>
+        <li class="mobile-nav-item"><a href="lifestyle.html" class="mobile-nav-link">Lifestyle</a></li>
+      </ul>
+      <div class="mobile-nav-auth" id="mobile-nav-auth">
+        <a href="../signin.html" class="btn btn-outline btn-block">Sign In</a>
+        <a href="../signup.html" class="btn btn-primary btn-block">Sign Up</a>
+      </div>
+      <div class="mobile-nav-search">
+        <form class="search-form" action="../search-results.html" method="GET">
+          <input type="search" name="q" placeholder="Search articles...">
+        </form>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="category-page-header">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="../../index.html">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <span>Fitness</span>
+        </nav>
+        <h1 class="category-page-title">Fitness</h1>
+        <p class="category-page-description">Workouts, training tips, and exercise science for all fitness levels. Transform your body and mind.</p>
+      </div>
+    </section>
+
+    <div class="category-tabs">
+      <button class="category-tab active" data-subcategory="all">All</button>
+      <button class="category-tab" data-subcategory="workouts">Workouts</button>
+      <button class="category-tab" data-subcategory="strength">Strength</button>
+      <button class="category-tab" data-subcategory="yoga">Yoga</button>
+      <button class="category-tab" data-subcategory="running">Running</button>
+      <button class="category-tab" data-subcategory="recovery">Recovery</button>
+    </div>
+
+    <section class="category-articles">
+      <div class="container">
+        <div class="article-grid" id="articles-grid">
+          <article class="card" data-subcategory="workouts">
+            <a href="../articles/article.html?slug=hiit-workouts-beginners-guide">
+              <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=800&h=600&fit=crop" alt="HIIT workout" class="card-image">
+            </a>
+            <div class="card-content">
+              <span class="card-category">Workouts</span>
+              <h3 class="card-title">
+                <a href="../articles/article.html?slug=hiit-workouts-beginners-guide">HIIT Workouts: Complete Guide for Beginners</a>
+              </h3>
+              <p class="card-excerpt">High-Intensity Interval Training can transform your fitness. Learn how to start safely and effectively.</p>
+              <div class="card-meta">
+                <span class="card-meta-item">Jake Thompson</span>
+                <span class="card-meta-item">7 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-subcategory="strength">
+            <a href="../articles/article.html?slug=strength-training-women-myths">
+              <img src="https://images.unsplash.com/photo-1594737626072-90dc274bc2bd?w=800&h=600&fit=crop" alt="Strength training" class="card-image">
+            </a>
+            <div class="card-content">
+              <span class="card-category">Strength</span>
+              <h3 class="card-title">
+                <a href="../articles/article.html?slug=strength-training-women-myths">Strength Training for Women: Myths Debunked</a>
+              </h3>
+              <p class="card-excerpt">Don't let myths hold you back from lifting weights. Here's the truth about strength training for women.</p>
+              <div class="card-meta">
+                <span class="card-meta-item">Amanda Lee</span>
+                <span class="card-meta-item">6 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-subcategory="yoga">
+            <a href="../articles/article.html?slug=yoga-flexibility-essential-poses">
+              <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=600&fit=crop" alt="Yoga" class="card-image">
+            </a>
+            <div class="card-content">
+              <span class="card-category">Yoga</span>
+              <h3 class="card-title">
+                <a href="../articles/article.html?slug=yoga-flexibility-essential-poses">Yoga for Flexibility: 10 Essential Poses</a>
+              </h3>
+              <p class="card-excerpt">Improve your flexibility with these fundamental yoga poses suitable for all levels.</p>
+              <div class="card-meta">
+                <span class="card-meta-item">Priya Sharma</span>
+                <span class="card-meta-item">5 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-subcategory="running">
+            <a href="../articles/article.html?slug=running-first-5k-training-plan">
+              <img src="https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=800&h=600&fit=crop" alt="Running" class="card-image">
+            </a>
+            <div class="card-content">
+              <span class="card-category">Running</span>
+              <h3 class="card-title">
+                <a href="../articles/article.html?slug=running-first-5k-training-plan">Running Your First 5K: Training Plan</a>
+              </h3>
+              <p class="card-excerpt">From couch to 5K in 8 weeks with this beginner-friendly training program.</p>
+              <div class="card-meta">
+                <span class="card-meta-item">Chris Martin</span>
+                <span class="card-meta-item">8 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-subcategory="recovery">
+            <a href="../articles/article.html?slug=recovery-techniques-athletes">
+              <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=600&fit=crop" alt="Recovery" class="card-image">
+            </a>
+            <div class="card-content">
+              <span class="card-category">Recovery</span>
+              <h3 class="card-title">
+                <a href="../articles/article.html?slug=recovery-techniques-athletes">Recovery Techniques Every Athlete Needs</a>
+              </h3>
+              <p class="card-excerpt">Optimize your recovery with these science-backed techniques for faster muscle repair.</p>
+              <div class="card-meta">
+                <span class="card-meta-item">Dr. Alex Rivera</span>
+                <span class="card-meta-item">6 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-subcategory="equipment">
+            <a href="../articles/article.html?slug=home-workout-equipment">
+              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=600&fit=crop" alt="Home workout equipment" class="card-image">
+            </a>
+            <div class="card-content">
+              <span class="card-category">Equipment</span>
+              <h3 class="card-title">
+                <a href="../articles/article.html?slug=home-workout-equipment">Home Workout Equipment Essentials</a>
+              </h3>
+              <p class="card-excerpt">Build an effective home gym without breaking the bank with these essential pieces.</p>
+              <div class="card-meta">
+                <span class="card-meta-item">Kelly Anderson</span>
+                <span class="card-meta-item">5 min read</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container container-narrow">
+        <div class="newsletter-box">
+          <h3>Get Fitness Tips Weekly</h3>
+          <p>Subscribe to receive workout plans, training tips, and fitness motivation.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); handleNewsletterSubmit(this);">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../../index.html" class="footer-logo">
+            <svg class="footer-logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="18" stroke="white" stroke-width="3"/>
+              <path d="M20 8C20 8 12 14 12 22C12 26.4183 15.5817 30 20 30C24.4183 30 28 26.4183 28 22C28 14 20 8 20 8Z" fill="white"/>
+              <path d="M20 14V26M16 20H24" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            HealthlineClone
+          </a>
+          <p class="footer-description">Your trusted source for health information and wellness guidance.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="nutrition.html" class="footer-link">Nutrition</a></li>
+            <li><a href="fitness.html" class="footer-link">Fitness</a></li>
+            <li><a href="mental-health.html" class="footer-link">Mental Health</a></li>
+            <li><a href="wellness.html" class="footer-link">Wellness</a></li>
+            <li><a href="conditions.html" class="footer-link">Conditions</a></li>
+            <li><a href="lifestyle.html" class="footer-link">Lifestyle</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">About Us</a></li>
+            <li><a href="#" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column footer-newsletter">
+          <h4>Newsletter</h4>
+          <p>Subscribe for weekly health tips.</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2024 Healthline Clone. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#" class="footer-legal-link">Privacy Policy</a>
+          <a href="#" class="footer-legal-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script src="../../js/search.js"></script>
+  <script>
+    document.querySelectorAll('.category-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        const subcategory = this.dataset.subcategory;
+        document.querySelectorAll('#articles-grid .card').forEach(article => {
+          article.style.display = (subcategory === 'all' || article.dataset.subcategory === subcategory) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

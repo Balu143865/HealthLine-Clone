@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Healthline Clone - Health Information and Wellness Tips{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <span class="hero-label">Featured</span>
+      <h1 class="hero-title">{{ featured_article.title|default:"Your Trusted Source for Health Information" }}</h1>
+      <p class="hero-excerpt">{{ featured_article.excerpt|default:"Discover evidence-based articles on nutrition, fitness, mental health, and wellness to help you live your healthiest life." }}</p>
+      <div class="hero-meta">
+        <span class="hero-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          {{ featured_article.author|default:"Healthline Team" }}
+        </span>
+        <span class="hero-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          {{ featured_article.read_time|default:"5" }} min read
+        </span>
+      </div>
+      {% if featured_article %}
+        <a href="{% url 'core:article_detail' featured_article.slug %}" class="btn btn-primary btn-lg mt-lg">Read Article</a>
+      {% else %}
+        <a href="{% url 'core:search' %}" class="btn btn-primary btn-lg mt-lg">Explore Articles</a>
+      {% endif %}
+    </div>
+    <div class="hero-image-wrapper">
+      {% if featured_article %}
+        <img src="{{ featured_article.get_image_url }}" alt="{{ featured_article.title }}" class="hero-image">
+        <div class="hero-image-badge">
+          <span>{{ featured_article.category.name }}</span>
+          <strong>Popular</strong>
+        </div>
+      {% else %}
+        <img src="{% static 'images/placeholder.svg' %}" alt="Health and Wellness" class="hero-image">
+        <div class="hero-image-badge">
+          <span>Health</span>
+          <strong>Featured</strong>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- Trending Section -->
+{% if trending_articles %}
+<section class="trending-section section">
+  <div class="container">
+    <div class="trending-header">
+      <h2 class="trending-title">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+          <polyline points="17 6 23 6 23 12"/>
+        </svg>
+        Trending Now
+      </h2>
+      <a href="{% url 'core:search' %}" class="btn btn-outline">View All</a>
+    </div>
+    <div class="trending-grid">
+      {% for article in trending_articles %}
+      <article class="trending-card">
+        <a href="{% url 'core:article_detail' article.slug %}">
+          <img src="{{ article.get_image_url }}" alt="{{ article.title }}" class="trending-card-image">
+        </a>
+        <div class="trending-card-content">
+          <span class="trending-card-category">{{ article.category.name }}</span>
+          <h3 class="trending-card-title">
+            <a href="{% url 'core:article_detail' article.slug %}">{{ article.title }}</a>
+          </h3>
+          <span class="trending-card-meta">{{ article.read_time }} min read</span>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Categories Section -->
+<section class="category-section section">
+  <div class="container">
+    <div class="category-header">
+      <h2>Explore by Category</h2>
+      <p>Browse our comprehensive health content organized by topic</p>
+    </div>
+    <div class="category-grid">
+      {% for category in categories %}
+      <a href="{% url 'core:category' category.slug %}" class="category-card">
+        <div class="category-card-icon">
+          {% if category.slug == 'nutrition' %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+            <line x1="6" y1="1" x2="6" y2="4"/>
+            <line x1="10" y1="1" x2="10" y2="4"/>
+            <line x1="14" y1="1" x2="14" y2="4"/>
+          </svg>
+          {% elif category.slug == 'fitness' %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6.5 6.5L17.5 17.5"/>
+            <path d="M3 10L6.5 6.5L10 10"/>
+            <path d="M14 14L17.5 17.5L21 14"/>
+            <rect x="2" y="9" width="4" height="6" rx="1"/>
+            <rect x="18" y="9" width="4" height="6" rx="1"/>
+          </svg>
+          {% elif category.slug == 'mental-health' %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2a10 10 0 1 0 10 10"/>
+            <path d="M12 12V6"/>
+            <path d="M12 12L16 14"/>
+            <circle cx="12" cy="12" r="1"/>
+          </svg>
+          {% elif category.slug == 'wellness' %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          {% elif category.slug == 'conditions' %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+          {% elif category.slug == 'lifestyle' %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          {% else %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          {% endif %}
+        </div>
+        <h3 class="category-card-title">{{ category.name }}</h3>
+        <span class="category-card-count">{{ category.articles.count }} articles</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Featured Articles Section -->
+{% if featured_articles %}
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Editor's Picks</h2>
+    <div class="article-grid">
+      {% for article in featured_articles %}
+      <article class="card">
+        <a href="{% url 'core:article_detail' article.slug %}">
+          <img src="{{ article.get_image_url }}" alt="{{ article.title }}" class="card-image">
+        </a>
+        <div class="card-content">
+          <span class="card-category">{{ article.category.name }}</span>
+          <h3 class="card-title">
+            <a href="{% url 'core:article_detail' article.slug %}">{{ article.title }}</a>
+          </h3>
+          <p class="card-excerpt">{{ article.excerpt|truncatewords:20 }}</p>
+          <div class="card-meta">
+            <span class="card-meta-item">{{ article.author }}</span>
+            <span class="card-meta-item">{{ article.read_time }} min read</span>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Newsletter Section -->
+<section class="section section-light">
+  <div class="container container-narrow">
+    <div class="newsletter-box">
+      <h3>Stay Informed About Your Health</h3>
+      <p>Get the latest health tips, research updates, and wellness advice delivered to your inbox weekly.</p>
+      <form class="newsletter-form" id="newsletter-form">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = this;
+  const email = form.querySelector('input[name="email"]').value;
+  const csrfToken = form.querySelector('[name="csrfmiddlewaretoken"]').value;
+  
+  fetch('{% url "core:newsletter_subscribe" %}', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'X-CSRFToken': csrfToken
+    },
+    body: 'email=' + encodeURIComponent(email)
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert('Thank you for subscribing!');
+      form.reset();
+    } else {
+      alert(data.error || 'An error occurred. Please try again.');
+    }
+  })
+  .catch(error => {
+    alert('An error occurred. Please try again.');
+  });
+});
+</script>
+{% endblock %}

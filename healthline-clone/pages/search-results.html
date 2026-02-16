@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Search results for health articles on Healthline Clone.">
+  <title>Search Results - Healthline Clone</title>
+  
+  <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <header class="header">
+    <div class="header-container">
+      <a href="../../index.html" class="header-logo">
+        <svg class="header-logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="#00A86B" stroke-width="3"/>
+          <path d="M20 8C20 8 12 14 12 22C12 26.4183 15.5817 30 20 30C24.4183 30 28 26.4183 28 22C28 14 20 8 20 8Z" fill="#00A86B"/>
+          <path d="M20 14V26M16 20H24" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Healthline<span>Clone</span>
+      </a>
+      
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="categories/nutrition.html" class="nav-link">Nutrition</a></li>
+          <li class="nav-item"><a href="categories/fitness.html" class="nav-link">Fitness</a></li>
+          <li class="nav-item"><a href="categories/mental-health.html" class="nav-link">Mental Health</a></li>
+          <li class="nav-item"><a href="categories/wellness.html" class="nav-link">Wellness</a></li>
+          <li class="nav-item"><a href="categories/conditions.html" class="nav-link">Conditions</a></li>
+          <li class="nav-item"><a href="categories/lifestyle.html" class="nav-link">Lifestyle</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header-search">
+        <button class="header-search-toggle" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+        </button>
+        <form class="header-search-form search-form" action="search-results.html" method="GET">
+          <input type="search" name="q" class="header-search-input" placeholder="Search articles..." autocomplete="off">
+          <div class="search-suggestions"></div>
+        </form>
+      </div>
+      
+      <div class="header-auth" id="header-auth">
+        <a href="signin.html" class="btn btn-outline btn-sm">Sign In</a>
+        <a href="signup.html" class="btn btn-primary btn-sm">Sign Up</a>
+      </div>
+      
+      <button class="mobile-menu-toggle" aria-label="Menu"><span></span></button>
+    </div>
+    
+    <nav class="mobile-nav">
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item"><a href="categories/nutrition.html" class="mobile-nav-link">Nutrition</a></li>
+        <li class="mobile-nav-item"><a href="categories/fitness.html" class="mobile-nav-link">Fitness</a></li>
+        <li class="mobile-nav-item"><a href="categories/mental-health.html" class="mobile-nav-link">Mental Health</a></li>
+        <li class="mobile-nav-item"><a href="categories/wellness.html" class="mobile-nav-link">Wellness</a></li>
+        <li class="mobile-nav-item"><a href="categories/conditions.html" class="mobile-nav-link">Conditions</a></li>
+        <li class="mobile-nav-item"><a href="categories/lifestyle.html" class="mobile-nav-link">Lifestyle</a></li>
+      </ul>
+      <div class="mobile-nav-auth" id="mobile-nav-auth">
+        <a href="signin.html" class="btn btn-outline btn-block">Sign In</a>
+        <a href="signup.html" class="btn btn-primary btn-block">Sign Up</a>
+      </div>
+      <div class="mobile-nav-search">
+        <form class="search-form" action="search-results.html" method="GET">
+          <input type="search" name="q" placeholder="Search articles...">
+        </form>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="search-page">
+      <div class="container">
+        <div class="search-header">
+          <h1>Search Results</h1>
+          <p class="search-results-info">Loading...</p>
+          <form class="search-form-large" action="search-results.html" method="GET">
+            <input type="search" name="q" placeholder="Search for health articles...">
+            <button type="submit">Search</button>
+          </form>
+        </div>
+        
+        <div class="search-results-container"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../../index.html" class="footer-logo">
+            <svg class="footer-logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="18" stroke="white" stroke-width="3"/>
+              <path d="M20 8C20 8 12 14 12 22C12 26.4183 15.5817 30 20 30C24.4183 30 28 26.4183 28 22C28 14 20 8 20 8Z" fill="white"/>
+              <path d="M20 14V26M16 20H24" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            HealthlineClone
+          </a>
+          <p class="footer-description">Your trusted source for health information and wellness guidance.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="categories/nutrition.html" class="footer-link">Nutrition</a></li>
+            <li><a href="categories/fitness.html" class="footer-link">Fitness</a></li>
+            <li><a href="categories/mental-health.html" class="footer-link">Mental Health</a></li>
+            <li><a href="categories/wellness.html" class="footer-link">Wellness</a></li>
+            <li><a href="categories/conditions.html" class="footer-link">Conditions</a></li>
+            <li><a href="categories/lifestyle.html" class="footer-link">Lifestyle</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">About Us</a></li>
+            <li><a href="#" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column footer-newsletter">
+          <h4>Newsletter</h4>
+          <p>Subscribe for weekly health tips.</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2024 Healthline Clone. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#" class="footer-legal-link">Privacy Policy</a>
+          <a href="#" class="footer-legal-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/search.js"></script>
+  <script>
+    // Display search results
+    document.addEventListener('DOMContentLoaded', async function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = urlParams.get('q') || '';
+      
+      const searchInput = document.querySelector('.search-form-large input');
+      if (searchInput && query) {
+        searchInput.value = query;
+      }
+      
+      const resultsInfo = document.querySelector('.search-results-info');
+      const resultsContainer = document.querySelector('.search-results-container');
+      
+      if (!query) {
+        resultsInfo.textContent = 'Enter a search term to find articles.';
+        return;
+      }
+      
+      try {
+        const response = await fetch('../data/articles.json');
+        const data = await response.json();
+        
+        // Search articles
+        const queryLower = query.toLowerCase();
+        const results = data.articles.filter(article => {
+          return article.title.toLowerCase().includes(queryLower) ||
+                 article.excerpt.toLowerCase().includes(queryLower) ||
+                 article.category.toLowerCase().includes(queryLower) ||
+                 article.tags.some(tag => tag.toLowerCase().includes(queryLower)) ||
+                 article.author.toLowerCase().includes(queryLower);
+        });
+        
+        resultsInfo.textContent = `Found ${results.length} result${results.length !== 1 ? 's' : ''} for "${query}"`;
+        
+        if (results.length === 0) {
+          resultsContainer.innerHTML = `
+            <div class="search-no-results">
+              <p>No articles found matching your search.</p>
+              <p>Try different keywords or browse our <a href="categories/nutrition.html">categories</a>.</p>
+            </div>
+          `;
+          return;
+        }
+        
+        resultsContainer.innerHTML = results.map(article => {
+          const imageSrc = article.image.startsWith('http') ? article.image : '../' + article.image;
+          return `
+          <article class="search-result-item">
+            <a href="articles/article.html?slug=${article.slug}" class="search-result-link">
+              <div class="search-result-image">
+                <img src="${imageSrc}" alt="${article.title}" loading="lazy">
+              </div>
+              <div class="search-result-content">
+                <span class="search-result-category">${article.category.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}</span>
+                <h2 class="search-result-title">${article.title}</h2>
+                <p class="search-result-excerpt">${article.excerpt}</p>
+                <div class="search-result-meta">
+                  <span class="search-result-author">${article.author}</span>
+                  <span class="search-result-read-time">${article.readTime}</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        `}).join('');
+        
+      } catch (error) {
+        console.error('Error loading search results:', error);
+        resultsInfo.textContent = 'Error loading results. Please try again.';
+      }
+    });
+  </script>
+</body>
+</html>

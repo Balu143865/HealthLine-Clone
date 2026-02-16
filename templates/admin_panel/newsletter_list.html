@@ -1,0 +1,99 @@
+{% extends 'admin_panel/base.html' %}
+
+{% block title %}Newsletter Subscriptions{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-header-content">
+        <h1 class="page-title">Newsletter Subscriptions</h1>
+        <p class="page-subtitle">Manage email subscriptions</p>
+    </div>
+</div>
+
+<!-- Stats -->
+<div class="stats-row">
+    <div class="stat-item">
+        <span class="stat-value">{{ total_count }}</span>
+        <span class="stat-label">Total</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-value">{{ active_count }}</span>
+        <span class="stat-label">Active</span>
+    </div>
+</div>
+
+<!-- Filters -->
+<div class="filters-bar">
+    <form method="get" class="filters-form">
+        <div class="filter-group">
+            <select name="status" class="filter-select">
+                <option value="">All Status</option>
+                <option value="active" {% if request.GET.status == 'active' %}selected{% endif %}>Active</option>
+                <option value="inactive" {% if request.GET.status == 'inactive' %}selected{% endif %}>Inactive</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-secondary">Filter</button>
+        <a href="{% url 'admin_panel:newsletter_list' %}" class="btn btn-ghost">Clear</a>
+    </form>
+</div>
+
+<!-- Newsletter Table -->
+<div class="data-table-container">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Subscribed</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for newsletter in newsletters %}
+            <tr>
+                <td>
+                    <span class="table-item-title">{{ newsletter.email }}</span>
+                </td>
+                <td>
+                    {% if newsletter.is_active %}
+                    <span class="badge badge-success">Active</span>
+                    {% else %}
+                    <span class="badge badge-secondary">Inactive</span>
+                    {% endif %}
+                </td>
+                <td>{{ newsletter.created_at|date:"M d, Y H:i" }}</td>
+                <td>
+                    <div class="table-actions">
+                        <a href="{% url 'admin_panel:newsletter_toggle' newsletter.pk %}" class="btn btn-secondary btn-sm">
+                            {% if newsletter.is_active %}Deactivate{% else %}Activate{% endif %}
+                        </a>
+                        <a href="{% url 'admin_panel:newsletter_delete' newsletter.pk %}" class="btn btn-ghost btn-sm">Delete</a>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="empty-table">
+                    <p>No newsletter subscriptions found.</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Pagination -->
+{% if newsletters.has_other_pages %}
+<div class="pagination">
+    {% if newsletters.has_previous %}
+    <a href="?page={{ newsletters.previous_page_number }}&{{ request.GET.urlencode }}" class="pagination-btn">Previous</a>
+    {% endif %}
+    
+    <span class="pagination-info">Page {{ newsletters.number }} of {{ newsletters.paginator.num_pages }}</span>
+    
+    {% if newsletters.has_next %}
+    <a href="?page={{ newsletters.next_page_number }}&{{ request.GET.urlencode }}" class="pagination-btn">Next</a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

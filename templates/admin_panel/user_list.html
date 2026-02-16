@@ -1,0 +1,92 @@
+{% extends 'admin_panel/base.html' %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-header-content">
+        <h1 class="page-title">Users</h1>
+        <p class="page-subtitle">Manage registered users and staff</p>
+    </div>
+</div>
+
+<!-- Stats -->
+<div class="stats-row">
+    <div class="stat-item">
+        <span class="stat-value">{{ total_count }}</span>
+        <span class="stat-label">Total Users</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-value">{{ staff_count }}</span>
+        <span class="stat-label">Staff Members</span>
+    </div>
+</div>
+
+<!-- Users Table -->
+<div class="data-table-container">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Joined</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>
+                    <div class="table-user">
+                        <div class="user-avatar-sm">{{ user.username|slice:":1"|upper }}</div>
+                        <span class="table-item-title">{{ user.username }}</span>
+                    </div>
+                </td>
+                <td>{{ user.email|default:"-" }}</td>
+                <td>
+                    {% if user.is_superuser %}
+                    <span class="badge badge-danger">Superuser</span>
+                    {% elif user.is_staff %}
+                    <span class="badge badge-primary">Staff</span>
+                    {% else %}
+                    <span class="badge badge-secondary">User</span>
+                    {% endif %}
+                </td>
+                <td>{{ user.date_joined|date:"M d, Y" }}</td>
+                <td>
+                    <div class="table-actions">
+                        {% if not user.is_superuser %}
+                        <a href="{% url 'admin_panel:user_toggle_staff' user.pk %}" class="btn btn-secondary btn-sm">
+                            {% if user.is_staff %}Remove Staff{% else %}Make Staff{% endif %}
+                        </a>
+                        {% endif %}
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="empty-table">
+                    <p>No users found.</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Pagination -->
+{% if users.has_other_pages %}
+<div class="pagination">
+    {% if users.has_previous %}
+    <a href="?page={{ users.previous_page_number }}" class="pagination-btn">Previous</a>
+    {% endif %}
+    
+    <span class="pagination-info">Page {{ users.number }} of {{ users.paginator.num_pages }}</span>
+    
+    {% if users.has_next %}
+    <a href="?page={{ users.next_page_number }}" class="pagination-btn">Next</a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

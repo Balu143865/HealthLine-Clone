@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read this health article on Healthline Clone.">
+  <title>Article - Healthline Clone</title>
+  
+  <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <header class="header">
+    <div class="header-container">
+      <a href="../../index.html" class="header-logo">
+        <svg class="header-logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="#00A86B" stroke-width="3"/>
+          <path d="M20 8C20 8 12 14 12 22C12 26.4183 15.5817 30 20 30C24.4183 30 28 26.4183 28 22C28 14 20 8 20 8Z" fill="#00A86B"/>
+          <path d="M20 14V26M16 20H24" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Healthline<span>Clone</span>
+      </a>
+      
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../categories/nutrition.html" class="nav-link">Nutrition</a></li>
+          <li class="nav-item"><a href="../categories/fitness.html" class="nav-link">Fitness</a></li>
+          <li class="nav-item"><a href="../categories/mental-health.html" class="nav-link">Mental Health</a></li>
+          <li class="nav-item"><a href="../categories/wellness.html" class="nav-link">Wellness</a></li>
+          <li class="nav-item"><a href="../categories/conditions.html" class="nav-link">Conditions</a></li>
+          <li class="nav-item"><a href="../categories/lifestyle.html" class="nav-link">Lifestyle</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header-search">
+        <button class="header-search-toggle" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+        </button>
+        <form class="header-search-form search-form" action="../search-results.html" method="GET">
+          <input type="search" name="q" class="header-search-input" placeholder="Search articles..." autocomplete="off">
+          <div class="search-suggestions"></div>
+        </form>
+      </div>
+      
+      <div class="header-auth" id="header-auth">
+        <a href="../signin.html" class="btn btn-outline btn-sm">Sign In</a>
+        <a href="../signup.html" class="btn btn-primary btn-sm">Sign Up</a>
+      </div>
+      
+      <button class="mobile-menu-toggle" aria-label="Menu"><span></span></button>
+    </div>
+    
+    <nav class="mobile-nav">
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item"><a href="../categories/nutrition.html" class="mobile-nav-link">Nutrition</a></li>
+        <li class="mobile-nav-item"><a href="../categories/fitness.html" class="mobile-nav-link">Fitness</a></li>
+        <li class="mobile-nav-item"><a href="../categories/mental-health.html" class="mobile-nav-link">Mental Health</a></li>
+        <li class="mobile-nav-item"><a href="../categories/wellness.html" class="mobile-nav-link">Wellness</a></li>
+        <li class="mobile-nav-item"><a href="../categories/conditions.html" class="mobile-nav-link">Conditions</a></li>
+        <li class="mobile-nav-item"><a href="../categories/lifestyle.html" class="mobile-nav-link">Lifestyle</a></li>
+      </ul>
+      <div class="mobile-nav-auth" id="mobile-nav-auth">
+        <a href="../signin.html" class="btn btn-outline btn-block">Sign In</a>
+        <a href="../signup.html" class="btn btn-primary btn-block">Sign Up</a>
+      </div>
+      <div class="mobile-nav-search">
+        <form class="search-form" action="../search-results.html" method="GET">
+          <input type="search" name="q" placeholder="Search articles...">
+        </form>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article class="article">
+      <!-- Article Header -->
+      <div class="article-header">
+        <div class="container">
+          <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="#" id="category-link">Category</a>
+            <span class="breadcrumb-separator">/</span>
+            <span id="article-title-breadcrumb">Article Title</span>
+          </nav>
+        </div>
+      </div>
+      
+      <!-- Article Content with Side-by-Side Layout -->
+      <div class="article-main">
+        <div class="container">
+          <div class="article-layout">
+            <!-- Image on Left -->
+            <div class="article-image-column">
+              <img id="article-image" src="../../images/placeholder.svg" alt="Article image" class="article-featured-image">
+            </div>
+            
+            <!-- Content on Right -->
+            <div class="article-content-column">
+              <span class="article-category" id="article-category">Category</span>
+              <h1 class="article-title" id="article-title">Loading...</h1>
+              
+              <div class="article-meta">
+                <div class="article-author">
+                  <div class="article-author-avatar-placeholder" id="author-avatar">DR</div>
+                  <div class="article-author-info">
+                    <span class="article-author-name" id="author-name">Author</span>
+                    <span class="article-author-title" id="author-title">Title</span>
+                  </div>
+                </div>
+                <div class="article-details">
+                  <span class="article-date" id="article-date">Date</span>
+                  <span class="article-read-time" id="read-time">Read time</span>
+                </div>
+              </div>
+              
+              <div class="article-body" id="article-content">
+                <p>Loading article content...</p>
+              </div>
+              
+              <!-- Article Tags -->
+              <div class="article-tags">
+                <span class="article-tags-label">Tags:</span>
+                <div class="article-tags-list" id="article-tags">
+                  <!-- Tags will be inserted here -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Related Articles - Row Layout -->
+    <section class="related-articles">
+      <div class="container">
+        <h2 class="section-title">Related Articles</h2>
+        <div class="related-articles-row" id="related-articles">
+          <!-- Related articles will be inserted here -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../../index.html" class="footer-logo">
+            <svg class="footer-logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="18" stroke="#00A86B" stroke-width="3"/>
+              <path d="M20 8C20 8 12 14 12 22C12 26.4183 15.5817 30 20 30C24.4183 30 28 26.4183 28 22C28 14 20 8 20 8Z" fill="#00A86B"/>
+              <path d="M20 14V26M16 20H24" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Healthline<span>Clone</span>
+          </a>
+          <p class="footer-description">Your trusted source for health information, nutrition tips, fitness advice, and wellness guidance.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h3 class="footer-title">Categories</h3>
+          <ul class="footer-list">
+            <li><a href="../categories/nutrition.html">Nutrition</a></li>
+            <li><a href="../categories/fitness.html">Fitness</a></li>
+            <li><a href="../categories/mental-health.html">Mental Health</a></li>
+            <li><a href="../categories/wellness.html">Wellness</a></li>
+            <li><a href="../categories/conditions.html">Conditions</a></li>
+            <li><a href="../categories/lifestyle.html">Lifestyle</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h3 class="footer-title">About</h3>
+          <ul class="footer-list">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Editorial Policy</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Advertise</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h3 class="footer-title">Legal</h3>
+          <ul class="footer-list">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2024 Healthline Clone. This is a demo project.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#fff"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script>
+    // Load article content from JSON
+    document.addEventListener('DOMContentLoaded', async function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const articleId = urlParams.get('id');
+      const articleSlug = urlParams.get('slug');
+      
+      try {
+        const response = await fetch('../../data/articles.json');
+        const data = await response.json();
+        
+        // Find article by id or slug
+        let article = data.articles.find(a => a.id === articleId || a.slug === articleSlug);
+        
+        if (!article) {
+          document.getElementById('article-title').textContent = 'Article Not Found';
+          document.getElementById('article-content').innerHTML = '<p>The requested article could not be found.</p>';
+          return;
+        }
+        
+        // Update page title
+        document.title = article.title + ' - Healthline Clone';
+        
+        // Update meta description
+        document.querySelector('meta[name="description"]').content = article.excerpt;
+        
+        // Update article elements
+        document.getElementById('article-title').textContent = article.title;
+        document.getElementById('article-title-breadcrumb').textContent = article.title;
+        document.getElementById('article-category').textContent = article.category.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
+        document.getElementById('category-link').href = '../categories/' + article.category + '.html';
+        document.getElementById('category-link').textContent = article.category.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
+        document.getElementById('author-name').textContent = article.author;
+        document.getElementById('author-title').textContent = article.authorTitle;
+        document.getElementById('author-avatar').textContent = article.author.split(' ').map(n => n[0]).join('');
+        document.getElementById('article-date').textContent = new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        document.getElementById('read-time').textContent = article.readTime;
+        // Handle image source - check if it's a full URL or relative path
+        const imageSrc = article.image.startsWith('http') ? article.image : '../../' + article.image;
+        document.getElementById('article-image').src = imageSrc;
+        document.getElementById('article-image').alt = article.title;
+        document.getElementById('article-content').innerHTML = article.content;
+        
+        // Update tags
+        const tagsContainer = document.getElementById('article-tags');
+        tagsContainer.innerHTML = article.tags.map(tag => 
+          '<a href="../search-results.html?q=' + encodeURIComponent(tag) + '" class="article-tag">' + tag + '</a>'
+        ).join('');
+        
+        // Load related articles
+        const relatedArticles = data.articles
+          .filter(a => a.category === article.category && a.id !== article.id)
+          .slice(0, 3);
+        
+        const relatedContainer = document.getElementById('related-articles');
+        relatedContainer.innerHTML = relatedArticles.map(a => {
+          const relatedImageSrc = a.image.startsWith('http') ? a.image : '../../' + a.image;
+          return `
+          <article class="related-article-card">
+            <a href="article.html?slug=${a.slug}" class="related-article-link">
+              <img src="${relatedImageSrc}" alt="${a.title}" class="related-article-image">
+              <div class="related-article-content">
+                <h3 class="related-article-title">${a.title}</h3>
+                <span class="related-article-meta">${a.readTime}</span>
+              </div>
+            </a>
+          </article>
+        `}).join('');
+        
+      } catch (error) {
+        console.error('Error loading article:', error);
+        document.getElementById('article-title').textContent = 'Error Loading Article';
+        document.getElementById('article-content').innerHTML = '<p>There was an error loading the article. Please try again.</p>';
+      }
+    });
+  </script>
+</body>
+</html>

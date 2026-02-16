@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ category.name }} - Healthline Clone{% endblock %}
+
+{% block content %}
+<!-- Category Hero -->
+<section class="category-hero">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="{% url 'core:home' %}">Home</a>
+      <span>/</span>
+      <span>{{ category.name }}</span>
+    </nav>
+    <h1>{{ category.name }}</h1>
+    <p>{{ category.description }}</p>
+  </div>
+</section>
+
+<!-- Category Tabs -->
+{% if subcategories %}
+<section class="category-tabs-section">
+  <div class="container">
+    <div class="category-tabs">
+      <a href="{% url 'core:category' category.slug %}" class="category-tab {% if not request.GET.sub %}active{% endif %}">All</a>
+      {% for sub in subcategories %}
+      <a href="{% url 'core:category' category.slug %}?sub={{ sub.slug }}" class="category-tab {% if request.GET.sub == sub.slug %}active{% endif %}">{{ sub.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Articles Grid -->
+<section class="section">
+  <div class="container">
+    {% if articles %}
+    <div class="article-grid">
+      {% for article in articles %}
+      <article class="card">
+        <a href="{% url 'core:article_detail' article.slug %}">
+          <div class="card-image">
+            <img src="{{ article.get_image_url }}" alt="{{ article.title }}">
+          </div>
+          <div class="card-content">
+            <span class="card-category">{{ article.category.name }}</span>
+            <h3 class="card-title">{{ article.title }}</h3>
+            <p class="card-excerpt">{{ article.excerpt|truncatewords:20 }}</p>
+            <div class="card-meta">
+              <span>{{ article.read_time }} min read</span>
+              <span>{{ article.views }} views</span>
+            </div>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-results">
+      <p>No articles found in this category.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="section section-newsletter">
+  <div class="container">
+    <div class="newsletter-box">
+      <h2>Stay Updated</h2>
+      <p>Get the latest {{ category.name|lower }} articles delivered to your inbox.</p>
+      <form class="newsletter-form" id="newsletter-form">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

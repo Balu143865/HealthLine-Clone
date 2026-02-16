@@ -1,0 +1,9 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#FFEBEE"/>
+  <circle cx="400" cy="180" r="80" fill="#F44336" opacity="0.3"/>
+  <circle cx="400" cy="180" r="50" fill="#F44336" opacity="0.4"/>
+  <circle cx="400" cy="180" r="25" fill="#F44336" opacity="0.5"/>
+  <path d="M380 160 L420 200 M420 160 L380 200" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <text x="400" y="310" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#C62828">Autoimmune Diseases</text>
+  <text x="400" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#666">Conditions Article</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#E1F5FE"/>
+  <circle cx="400" cy="180" r="80" fill="#03A9F4" opacity="0.3"/>
+  <path d="M370 140 Q370 200 400 220 Q430 200 430 140 Z" fill="#03A9F4" opacity="0.5"/>
+  <path d="M380 160 Q380 190 400 200 Q420 190 420 160 Z" fill="#03A9F4" opacity="0.3"/>
+  <text x="400" y="310" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#0277BD">Hydration</text>
+  <text x="400" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#666">Wellness Article</text>
+</svg>

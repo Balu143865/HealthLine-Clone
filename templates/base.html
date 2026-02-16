@@ -1,0 +1,318 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{% block meta_description %}Healthline Clone - Your trusted source for health information, nutrition tips, fitness advice, and wellness guidance.{% endblock %}">
+  <title>{% block title %}Healthline Clone{% endblock %}</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/components.css' %}">
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+  {% block extra_css %}{% endblock %}
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="{% url 'core:home' %}" class="header-logo">
+        <svg class="header-logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="#00A86B" stroke-width="3"/>
+          <path d="M20 8C20 8 12 14 12 22C12 26.4183 15.5817 30 20 30C24.4183 30 28 26.4183 28 22C28 14 20 8 20 8Z" fill="#00A86B"/>
+          <path d="M20 14V26M16 20H24" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Healthline<span>Clone</span>
+      </a>
+      
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Nutrition
+              <svg class="nav-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M2 4L5 7L8 4"/>
+              </svg>
+            </a>
+            <div class="nav-dropdown">
+              <a href="{% url 'core:category' 'nutrition' %}" class="nav-dropdown-link">All Nutrition</a>
+              <a href="{% url 'core:category' 'nutrition' %}?sub=diets" class="nav-dropdown-link">Diets</a>
+              <a href="{% url 'core:category' 'nutrition' %}?sub=supplements" class="nav-dropdown-link">Supplements</a>
+              <a href="{% url 'core:category' 'nutrition' %}?sub=foods" class="nav-dropdown-link">Healthy Foods</a>
+              <a href="{% url 'core:category' 'nutrition' %}?sub=beverages" class="nav-dropdown-link">Beverages</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Fitness
+              <svg class="nav-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M2 4L5 7L8 4"/>
+              </svg>
+            </a>
+            <div class="nav-dropdown">
+              <a href="{% url 'core:category' 'fitness' %}" class="nav-dropdown-link">All Fitness</a>
+              <a href="{% url 'core:category' 'fitness' %}?sub=workouts" class="nav-dropdown-link">Workouts</a>
+              <a href="{% url 'core:category' 'fitness' %}?sub=strength" class="nav-dropdown-link">Strength Training</a>
+              <a href="{% url 'core:category' 'fitness' %}?sub=yoga" class="nav-dropdown-link">Yoga</a>
+              <a href="{% url 'core:category' 'fitness' %}?sub=running" class="nav-dropdown-link">Running</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Mental Health
+              <svg class="nav-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M2 4L5 7L8 4"/>
+              </svg>
+            </a>
+            <div class="nav-dropdown">
+              <a href="{% url 'core:category' 'mental-health' %}" class="nav-dropdown-link">All Mental Health</a>
+              <a href="{% url 'core:category' 'mental-health' %}?sub=anxiety" class="nav-dropdown-link">Anxiety</a>
+              <a href="{% url 'core:category' 'mental-health' %}?sub=depression" class="nav-dropdown-link">Depression</a>
+              <a href="{% url 'core:category' 'mental-health' %}?sub=mindfulness" class="nav-dropdown-link">Mindfulness</a>
+              <a href="{% url 'core:category' 'mental-health' %}?sub=resilience" class="nav-dropdown-link">Resilience</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Wellness
+              <svg class="nav-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M2 4L5 7L8 4"/>
+              </svg>
+            </a>
+            <div class="nav-dropdown">
+              <a href="{% url 'core:category' 'wellness' %}" class="nav-dropdown-link">All Wellness</a>
+              <a href="{% url 'core:category' 'wellness' %}?sub=sleep" class="nav-dropdown-link">Sleep</a>
+              <a href="{% url 'core:category' 'wellness' %}?sub=self-care" class="nav-dropdown-link">Self-Care</a>
+              <a href="{% url 'core:category' 'wellness' %}?sub=hydration" class="nav-dropdown-link">Hydration</a>
+              <a href="{% url 'core:category' 'wellness' %}?sub=lifestyle" class="nav-dropdown-link">Lifestyle</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Conditions
+              <svg class="nav-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M2 4L5 7L8 4"/>
+              </svg>
+            </a>
+            <div class="nav-dropdown">
+              <a href="{% url 'core:category' 'conditions' %}" class="nav-dropdown-link">All Conditions</a>
+              <a href="{% url 'core:category' 'conditions' %}?sub=heart" class="nav-dropdown-link">Heart Health</a>
+              <a href="{% url 'core:category' 'conditions' %}?sub=diabetes" class="nav-dropdown-link">Diabetes</a>
+              <a href="{% url 'core:category' 'conditions' %}?sub=thyroid" class="nav-dropdown-link">Thyroid</a>
+              <a href="{% url 'core:category' 'conditions' %}?sub=autoimmune" class="nav-dropdown-link">Autoimmune</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Lifestyle
+              <svg class="nav-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M2 4L5 7L8 4"/>
+              </svg>
+            </a>
+            <div class="nav-dropdown">
+              <a href="{% url 'core:category' 'lifestyle' %}" class="nav-dropdown-link">All Lifestyle</a>
+              <a href="{% url 'core:category' 'lifestyle' %}?sub=relationships" class="nav-dropdown-link">Relationships</a>
+              <a href="{% url 'core:category' 'lifestyle' %}?sub=productivity" class="nav-dropdown-link">Productivity</a>
+              <a href="{% url 'core:category' 'lifestyle' %}?sub=sustainability" class="nav-dropdown-link">Sustainability</a>
+              <a href="{% url 'core:category' 'lifestyle' %}?sub=travel" class="nav-dropdown-link">Travel</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="header-search">
+        <button class="header-search-toggle" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="M21 21l-4.35-4.35"/>
+          </svg>
+        </button>
+        <form class="header-search-form search-form" action="{% url 'core:search' %}" method="GET">
+          <input type="search" name="q" class="header-search-input" placeholder="Search articles..." autocomplete="off" value="{{ request.GET.q|default:'' }}">
+          <div class="search-suggestions"></div>
+        </form>
+      </div>
+      
+      <div class="header-auth" id="header-auth">
+        {% if user.is_authenticated %}
+          <div class="header-auth-user">
+            <div class="header-auth-avatar">{{ user.profile.initials }}</div>
+            <span class="header-auth-name">{{ user.first_name|default:user.username }}</span>
+            <div class="header-auth-dropdown">
+              <a href="{% url 'core:profile' %}">My Profile</a>
+              <a href="{% url 'core:profile' %}#saved">Saved Articles</a>
+              <a href="{% url 'core:profile' %}#settings">Settings</a>
+              <div class="divider"></div>
+              <a href="{% url 'core:signout' %}">Sign Out</a>
+            </div>
+          </div>
+        {% else %}
+          <a href="{% url 'core:signin' %}" class="btn btn-outline btn-sm">Sign In</a>
+          <a href="{% url 'core:signup' %}" class="btn btn-primary btn-sm">Sign Up</a>
+        {% endif %}
+      </div>
+      
+      <button class="mobile-menu-toggle" aria-label="Menu">
+        <span></span>
+      </button>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item">
+          <a href="{% url 'core:category' 'nutrition' %}" class="mobile-nav-link">Nutrition</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="{% url 'core:category' 'fitness' %}" class="mobile-nav-link">Fitness</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="{% url 'core:category' 'mental-health' %}" class="mobile-nav-link">Mental Health</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="{% url 'core:category' 'wellness' %}" class="mobile-nav-link">Wellness</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="{% url 'core:category' 'conditions' %}" class="mobile-nav-link">Conditions</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="{% url 'core:category' 'lifestyle' %}" class="mobile-nav-link">Lifestyle</a>
+        </li>
+      </ul>
+      
+      <div class="mobile-nav-search">
+        <form action="{% url 'core:search' %}" method="get">
+          <input type="search" name="q" placeholder="Search articles...">
+        </form>
+      </div>
+      
+      <div class="mobile-nav-auth" id="mobile-nav-auth">
+        {% if user.is_authenticated %}
+          <div class="mobile-nav-user">
+            <div class="mobile-nav-avatar">{{ user.profile.initials }}</div>
+            <div class="mobile-nav-user-info">
+              <div class="mobile-nav-user-name">{{ user.first_name|default:user.username }}</div>
+              <div class="mobile-nav-user-email">{{ user.email }}</div>
+            </div>
+          </div>
+          <div class="mobile-nav-user-actions">
+            <a href="{% url 'core:profile' %}">My Profile</a>
+            <a href="#">Saved Articles</a>
+            <a href="#">Settings</a>
+            <a href="{% url 'core:signout' %}">Sign Out</a>
+          </div>
+        {% else %}
+          <a href="{% url 'core:signin' %}" class="mobile-nav-link">Sign In</a>
+          <a href="{% url 'core:signup' %}" class="mobile-nav-link">Sign Up</a>
+        {% endif %}
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Main Content -->
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="{% url 'core:home' %}" class="footer-logo">
+            <svg class="footer-logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="18" stroke="white" stroke-width="3"/>
+              <path d="M20 8C20 8 12 14 12 22C12 26.4183 15.5817 30 20 30C24.4183 30 28 26.4183 28 22C28 14 20 8 20 8Z" fill="white"/>
+              <path d="M20 14V26M16 20H24" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            HealthlineClone
+          </a>
+          <p class="footer-description">Your trusted source for health information, nutrition tips, fitness advice, and wellness guidance. We're committed to helping you live a healthier life.</p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#1F1F1F"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="{% url 'core:category' 'nutrition' %}" class="footer-link">Nutrition</a></li>
+            <li><a href="{% url 'core:category' 'fitness' %}" class="footer-link">Fitness</a></li>
+            <li><a href="{% url 'core:category' 'mental-health' %}" class="footer-link">Mental Health</a></li>
+            <li><a href="{% url 'core:category' 'wellness' %}" class="footer-link">Wellness</a></li>
+            <li><a href="{% url 'core:category' 'conditions' %}" class="footer-link">Conditions</a></li>
+            <li><a href="{% url 'core:category' 'lifestyle' %}" class="footer-link">Lifestyle</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">About Us</a></li>
+            <li><a href="#" class="footer-link">Our Team</a></li>
+            <li><a href="#" class="footer-link">Careers</a></li>
+            <li><a href="#" class="footer-link">Contact</a></li>
+            <li><a href="#" class="footer-link">Advertise</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column footer-newsletter">
+          <h4>Newsletter</h4>
+          <p>Subscribe to get the latest health tips and updates.</p>
+          <form class="footer-newsletter-form" id="footer-newsletter-form">
+            {% csrf_token %}
+            <input type="email" name="email" placeholder="Your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright">© {% now "Y" %} Healthline Clone. All rights reserved. This is a demo project.</p>
+        <div class="footer-legal">
+          <a href="#" class="footer-legal-link">Privacy Policy</a>
+          <a href="#" class="footer-legal-link">Terms of Service</a>
+          <a href="#" class="footer-legal-link">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script src="{% static 'js/main.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

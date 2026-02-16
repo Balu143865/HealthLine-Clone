@@ -1,0 +1,86 @@
+{% extends 'admin_panel/base.html' %}
+
+{% block title %}{{ action }} Category{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-header-content">
+        <h1 class="page-title">{{ action }} Category</h1>
+        <p class="page-subtitle">Create or edit a category</p>
+    </div>
+    <div class="page-header-actions">
+        <a href="{% url 'admin_panel:category_list' %}" class="btn btn-ghost">← Back to Categories</a>
+    </div>
+</div>
+
+<div class="form-container">
+    <form method="post" class="admin-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="form-row">
+            <div class="form-group form-group-large">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" value="{% if category %}{{ category.name }}{% endif %}" required placeholder="Category name">
+            </div>
+            <div class="form-group">
+                <label for="slug">Slug</label>
+                <input type="text" id="slug" name="slug" value="{% if category %}{{ category.slug }}{% endif %}" placeholder="auto-generated-from-name">
+                <span class="form-hint">Leave empty to auto-generate from name</span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="3" placeholder="Category description">{% if category %}{{ category.description }}{% endif %}</textarea>
+        </div>
+        
+        <div class="form-section">
+            <h3 class="form-section-title">Category Image</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="image_upload">Upload Image</label>
+                    <input type="file" id="image_upload" name="image_upload" accept="image/*">
+                    <span class="form-hint">Upload an image from your device (JPG, PNG, SVG)</span>
+                    {% if category and category.image %}
+                    <div class="current-image">
+                        <p>Current uploaded image: {{ category.image.name }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="image_url">Or Enter Image Path/URL</label>
+                    <input type="text" id="image_url" name="image_url" value="{% if category %}{{ category.image_url }}{% endif %}" placeholder="e.g., images/articles/placeholder.svg">
+                    <span class="form-hint">Enter a relative path or URL for the image</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="order">Display Order</label>
+            <input type="number" id="order" name="order" value="{% if category %}{{ category.order }}{% else %}0{% endif %}" min="0">
+            <span class="form-hint">Lower numbers appear first</span>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">{{ action }} Category</button>
+            <a href="{% url 'admin_panel:category_list' %}" class="btn btn-ghost">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Auto-generate slug from name
+document.getElementById('name').addEventListener('input', function() {
+    const slugInput = document.getElementById('slug');
+    if (!slugInput.value) {
+        const slug = this.value
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/(^-|-$)/g, '');
+        slugInput.value = slug;
+    }
+});
+</script>
+{% endblock %}

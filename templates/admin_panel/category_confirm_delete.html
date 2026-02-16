@@ -1,0 +1,24 @@
+{% extends 'admin_panel/base.html' %}
+
+{% block title %}Delete Category{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Delete Category</h1>
+</div>
+
+<div class="form-container">
+    <div class="confirm-delete">
+        <p>Are you sure you want to delete the category <strong>"{{ category.name }}"</strong>?</p>
+        <p class="text-muted">This action cannot be undone. Articles in this category will need to be reassigned.</p>
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-danger">Yes, Delete Category</button>
+                <a href="{% url 'admin_panel:category_list' %}" class="btn btn-ghost">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

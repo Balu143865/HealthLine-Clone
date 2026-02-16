@@ -1,0 +1,196 @@
+{% extends 'admin_panel/base.html' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-header-content">
+        <h1 class="page-title">Articles</h1>
+        <p class="page-subtitle">Manage your articles and content</p>
+    </div>
+    <div class="page-header-actions">
+        <a href="{% url 'admin_panel:article_create' %}" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            New Article
+        </a>
+    </div>
+</div>
+
+<!-- Filters -->
+<div class="filters-bar">
+    <form method="get" class="filters-form">
+        <div class="filter-group">
+            <input type="text" name="search" value="{{ request.GET.search }}" placeholder="Search articles..." class="filter-input">
+        </div>
+        <div class="filter-group">
+            <select name="category" class="filter-select">
+                <option value="">All Categories</option>
+                {% for cat in categories %}
+                <option value="{{ cat.slug }}" {% if request.GET.category == cat.slug %}selected{% endif %}>{{ cat.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="filter-group">
+            <select name="status" class="filter-select">
+                <option value="">All Status</option>
+                <option value="published" {% if request.GET.status == 'published' %}selected{% endif %}>Published</option>
+                <option value="draft" {% if request.GET.status == 'draft' %}selected{% endif %}>Draft</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-secondary">Filter</button>
+        <a href="{% url 'admin_panel:article_list' %}" class="btn btn-ghost">Clear</a>
+    </form>
+</div>
+
+<!-- Articles Table -->
+<div class="data-table-container">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th class="col-id">ID</th>
+                <th class="col-image">Image</th>
+                <th class="col-title">Title</th>
+                <th class="col-category">Category</th>
+                <th class="col-author">Author</th>
+                <th class="col-status">Status</th>
+                <th class="col-date">Date</th>
+                <th class="col-actions">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+            <tr>
+                <td class="col-id">{{ article.id }}</td>
+                <td class="col-image">
+                    <div class="article-image-thumb" style="width: 32px; height: 32px; border-radius: 4px; overflow: hidden;">
+                        <img src="{{ article.get_image_url }}" alt="{{ article.title }}" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;">
+                    </div>
+                </td>
+                <td class="col-title">
+                    <div class="article-title-cell">
+                        <a href="{% url 'admin_panel:article_edit' article.slug %}" class="article-title-link">{{ article.title|truncatechars:40 }}</a>
+                        <div class="article-meta-info">
+                            <span class="meta-item">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                                {{ article.views }}
+                            </span>
+                            <span class="meta-item">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                </svg>
+                                {{ article.likes }}
+                            </span>
+                            <span class="meta-item">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                {{ article.read_time }} min
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td class="col-category">
+                    <span class="category-badge" style="background-color: {{ article.category.color|default:'#4CAF50' }}20; color: {{ article.category.color|default:'#4CAF50' }}">
+                        {{ article.category.name|default:"Uncategorized" }}
+                    </span>
+                </td>
+                <td class="col-author">{{ article.author }}</td>
+                <td class="col-status">
+                    {% if article.status == 'published' %}
+                        <span class="status-badge status-published">Published</span>
+                    {% else %}
+                        <span class="status-badge status-draft">Draft</span>
+                    {% endif %}
+                    {% if article.is_featured %}
+                        <span class="status-badge status-featured">Featured</span>
+                    {% endif %}
+                    {% if article.is_trending %}
+                        <span class="status-badge status-trending">Trending</span>
+                    {% endif %}
+                </td>
+                <td class="col-date">{{ article.created_at|date:"M d, Y" }}</td>
+                <td class="col-actions">
+                    <div class="table-actions">
+                        <a href="{% url 'core:article_detail' article.slug %}" class="action-btn action-view" target="_blank" title="View">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </a>
+                        <a href="{% url 'admin_panel:article_edit' article.slug %}" class="action-btn action-edit" title="Edit">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                            </svg>
+                        </a>
+                        <a href="{% url 'admin_panel:article_delete' article.slug %}" class="action-btn action-delete" title="Delete">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"/>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="8" class="empty-table">
+                    <div class="empty-state">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                        <h3>No articles found</h3>
+                        <p>Get started by creating your first article.</p>
+                        <a href="{% url 'admin_panel:article_create' %}" class="btn btn-primary">Create First Article</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Pagination -->
+{% if articles.has_other_pages %}
+<div class="pagination">
+    {% if articles.has_previous %}
+    <a href="?page={{ articles.previous_page_number }}&{{ request.GET.urlencode }}" class="pagination-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Previous
+    </a>
+    {% endif %}
+    
+    <div class="pagination-numbers">
+        {% for num in articles.paginator.page_range %}
+            {% if articles.number == num %}
+            <span class="pagination-number active">{{ num }}</span>
+            {% elif num > articles.number|add:'-3' and num < articles.number|add:'3' %}
+            <a href="?page={{ num }}&{{ request.GET.urlencode }}" class="pagination-number">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+    {% if articles.has_next %}
+    <a href="?page={{ articles.next_page_number }}&{{ request.GET.urlencode }}" class="pagination-btn">
+        Next
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
+        </svg>
+    </a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

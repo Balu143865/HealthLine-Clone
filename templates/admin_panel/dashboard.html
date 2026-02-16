@@ -1,0 +1,372 @@
+{% extends 'admin_panel/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block extra_css %}
+<style>
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+}
+.chart-card {
+    background: var(--admin-card-bg);
+    border-radius: var(--admin-radius);
+    box-shadow: var(--admin-shadow);
+    padding: 20px;
+    overflow: hidden;
+}
+.chart-card h3 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--admin-text-dark);
+}
+@media (max-width: 992px) {
+    .chart-grid {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 768px) {
+    .chart-container {
+        height: 220px;
+    }
+    .chart-grid {
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+    .chart-card {
+        padding: 12px;
+    }
+    .chart-card h3 {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+}
+@media (max-width: 480px) {
+    .chart-container {
+        height: 180px;
+    }
+    .chart-card {
+        padding: 10px;
+    }
+    .chart-card h3 {
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Dashboard</h1>
+    <p class="page-subtitle">Welcome back, {{ user.username }}!</p>
+</div>
+
+<!-- Stats Cards -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon stat-icon-blue">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+            </svg>
+        </div>
+        <div class="stat-content">
+            <span class="stat-value">{{ total_articles }}</span>
+            <span class="stat-label">Total Articles</span>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-icon stat-icon-green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+            </svg>
+        </div>
+        <div class="stat-content">
+            <span class="stat-value">{{ total_categories }}</span>
+            <span class="stat-label">Categories</span>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-icon stat-icon-purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+            </svg>
+        </div>
+        <div class="stat-content">
+            <span class="stat-value">{{ total_newsletters }}</span>
+            <span class="stat-label">Newsletter Subscribers</span>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-icon stat-icon-orange">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+        </div>
+        <div class="stat-content">
+            <span class="stat-value">{{ total_users }}</span>
+            <span class="stat-label">Registered Users</span>
+        </div>
+    </div>
+</div>
+
+<!-- Charts Section -->
+<div class="chart-grid">
+    <!-- Articles by Category Chart -->
+    <div class="chart-card">
+        <h3>Articles by Category</h3>
+        <div class="chart-container">
+            <canvas id="categoryChart"></canvas>
+        </div>
+    </div>
+    
+    <!-- Articles Over Time Chart -->
+    <div class="chart-card">
+        <h3>Articles Published Over Time</h3>
+        <div class="chart-container">
+            <canvas id="articlesTimeChart"></canvas>
+        </div>
+    </div>
+    
+    <!-- Article Status Chart -->
+    <div class="chart-card">
+        <h3>Article Status</h3>
+        <div class="chart-container">
+            <canvas id="statusChart"></canvas>
+        </div>
+    </div>
+    
+    <!-- Top Viewed Articles -->
+    <div class="chart-card">
+        <h3>Top Viewed Articles</h3>
+        <div class="chart-container">
+            <canvas id="viewsChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- Content Grid -->
+<div class="dashboard-grid">
+    <!-- Recent Articles -->
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h2>Recent Articles</h2>
+            <a href="{% url 'admin_panel:article_list' %}" class="card-link">View All</a>
+        </div>
+        <div class="card-body">
+            {% if recent_articles %}
+            <div class="table-list">
+                {% for article in recent_articles %}
+                <div class="table-list-item">
+                    <div class="item-info">
+                        <span class="item-title">{{ article.title|truncatechars:40 }}</span>
+                        <span class="item-meta">{{ article.category.name }} • {{ article.created_at|date:"M d, Y" }}</span>
+                    </div>
+                    <div class="item-actions">
+                        {% if article.is_featured %}
+                        <span class="badge badge-primary">Featured</span>
+                        {% endif %}
+                        <a href="{% url 'admin_panel:article_edit' article.slug %}" class="btn-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="empty-state">No articles yet. <a href="{% url 'admin_panel:article_create' %}">Create one</a></p>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Recent Newsletter Subscriptions -->
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h2>Recent Subscriptions</h2>
+            <a href="{% url 'admin_panel:newsletter_list' %}" class="card-link">View All</a>
+        </div>
+        <div class="card-body">
+            {% if recent_newsletters %}
+            <div class="table-list">
+                {% for newsletter in recent_newsletters %}
+                <div class="table-list-item">
+                    <div class="item-info">
+                        <span class="item-title">{{ newsletter.email }}</span>
+                        <span class="item-meta">{{ newsletter.created_at|date:"M d, Y" }}</span>
+                    </div>
+                    <div class="item-actions">
+                        {% if newsletter.is_active %}
+                        <span class="badge badge-success">Active</span>
+                        {% else %}
+                        <span class="badge badge-secondary">Inactive</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="empty-state">No subscriptions yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Chart.js Default Configuration
+Chart.defaults.font.family = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+Chart.defaults.color = '#718096';
+
+// Category Distribution Chart
+const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+new Chart(categoryCtx, {
+    type: 'doughnut',
+    data: {
+        labels: {{ category_names|safe }},
+        datasets: [{
+            data: {{ category_counts }},
+            backgroundColor: [
+                '#0066cc',
+                '#28a745',
+                '#6f42c1',
+                '#fd7e14',
+                '#17a2b8',
+                '#dc3545',
+                '#ffc107',
+                '#20c997'
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'right',
+                labels: {
+                    padding: 15,
+                    usePointStyle: true
+                }
+            }
+        }
+    }
+});
+
+// Articles Over Time Chart
+const timeCtx = document.getElementById('articlesTimeChart').getContext('2d');
+new Chart(timeCtx, {
+    type: 'line',
+    data: {
+        labels: {{ article_months|safe }},
+        datasets: [{
+            label: 'Articles Published',
+            data: {{ article_counts_by_month }},
+            borderColor: '#0066cc',
+            backgroundColor: 'rgba(0, 102, 204, 0.1)',
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: '#0066cc',
+            pointBorderColor: '#fff',
+            pointBorderWidth: 2,
+            pointRadius: 4
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    stepSize: 1
+                }
+            }
+        }
+    }
+});
+
+// Article Status Chart
+const statusCtx = document.getElementById('statusChart').getContext('2d');
+new Chart(statusCtx, {
+    type: 'pie',
+    data: {
+        labels: ['Published', 'Draft'],
+        datasets: [{
+            data: [{{ published_count }}, {{ draft_count }}],
+            backgroundColor: ['#28a745', '#ffc107'],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'right',
+                labels: {
+                    padding: 15,
+                    usePointStyle: true
+                }
+            }
+        }
+    }
+});
+
+// Top Viewed Articles Chart
+const viewsCtx = document.getElementById('viewsChart').getContext('2d');
+new Chart(viewsCtx, {
+    type: 'bar',
+    data: {
+        labels: {{ top_articles_titles|safe }},
+        datasets: [{
+            label: 'Views',
+            data: {{ top_articles_views }},
+            backgroundColor: 'rgba(0, 102, 204, 0.8)',
+            borderRadius: 4
+        }]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            x: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+{% endblock %}

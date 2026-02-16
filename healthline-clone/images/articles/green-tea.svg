@@ -1,0 +1,10 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#E8F5E9"/>
+  <circle cx="400" cy="180" r="80" fill="#00A86B" opacity="0.3"/>
+  <ellipse cx="400" cy="280" rx="120" ry="40" fill="#00A86B" opacity="0.2"/>
+  <path d="M360 200 Q400 120 440 200" stroke="#00A86B" stroke-width="4" fill="none"/>
+  <circle cx="380" cy="160" r="15" fill="#00A86B" opacity="0.5"/>
+  <circle cx="420" cy="150" r="12" fill="#00A86B" opacity="0.4"/>
+  <text x="400" y="350" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#00A86B">Green Tea Benefits</text>
+  <text x="400" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#666">Nutrition Article</text>
+</svg>

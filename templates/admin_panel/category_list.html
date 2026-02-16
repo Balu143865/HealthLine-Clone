@@ -1,0 +1,68 @@
+{% extends 'admin_panel/base.html' %}
+
+{% block title %}Categories{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="page-header-content">
+        <h1 class="page-title">Categories</h1>
+        <p class="page-subtitle">Manage article categories</p>
+    </div>
+    <div class="page-header-actions">
+        <a href="{% url 'admin_panel:category_create' %}" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            New Category
+        </a>
+    </div>
+</div>
+
+<!-- Categories Grid -->
+<div class="data-grid">
+    {% for category in categories %}
+    <div class="data-card">
+        <div class="data-card-header">
+            <h3 class="data-card-title">{{ category.name }}</h3>
+            <span class="badge badge-secondary">{{ category.article_count }} articles</span>
+        </div>
+        <div class="data-card-body">
+            <p class="data-card-description">{{ category.description|default:"No description"|truncatechars:100 }}</p>
+            <div class="data-card-meta">
+                <span>Slug: {{ category.slug }}</span>
+                <span>Order: {{ category.order }}</span>
+            </div>
+        </div>
+        <div class="data-card-footer">
+            <a href="{% url 'admin_panel:category_edit' category.slug %}" class="btn btn-secondary btn-sm">Edit</a>
+            <a href="{% url 'admin_panel:category_delete' category.slug %}" class="btn btn-ghost btn-sm">Delete</a>
+        </div>
+    </div>
+    {% empty %}
+    <div class="empty-state-container">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+        </svg>
+        <h3>No categories yet</h3>
+        <p>Create your first category to organize articles.</p>
+        <a href="{% url 'admin_panel:category_create' %}" class="btn btn-primary">Create Category</a>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Pagination -->
+{% if categories.has_other_pages %}
+<div class="pagination">
+    {% if categories.has_previous %}
+    <a href="?page={{ categories.previous_page_number }}" class="pagination-btn">Previous</a>
+    {% endif %}
+    
+    <span class="pagination-info">Page {{ categories.number }} of {{ categories.paginator.num_pages }}</span>
+    
+    {% if categories.has_next %}
+    <a href="?page={{ categories.next_page_number }}" class="pagination-btn">Next</a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

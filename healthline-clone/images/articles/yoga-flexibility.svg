@@ -1,0 +1,8 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#E0F2F1"/>
+  <circle cx="400" cy="180" r="80" fill="#009688" opacity="0.3"/>
+  <ellipse cx="400" cy="200" rx="50" ry="30" fill="#009688" opacity="0.4"/>
+  <circle cx="400" cy="150" r="20" fill="#009688" opacity="0.5"/>
+  <text x="400" y="310" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#009688">Yoga Flexibility</text>
+  <text x="400" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#666">Fitness Article</text>
+</svg>

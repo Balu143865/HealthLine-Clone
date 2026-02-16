@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Healthline Clone - Your trusted source for health information, nutrition tips, fitness advice, and wellness guidance.">
+  <meta name="keywords" content="health, nutrition, fitness, mental health, wellness, medical information">
+  <title>Healthline Clone - Health Information and Wellness Tips</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="header-logo">
+        <svg class="header-logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="#00A86B" stroke-width="3"/>
+          <path d="M20 8C20 8 12 14 12 22C12 26.4183 15.5817 30 20 30C24.4183 30 28 26.4183 28 22C28 14 20 8 20 8Z" fill="#00A86B"/>
+          <path d="M20 14V26M16 20H24" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Healthline<span>Clone</span>
+      </a>
+      
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Nutrition
+              <svg class="nav-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M2 4L5 7L8 4"/>
+              </svg>
+            </a>
+            <div class="nav-dropdown">
+              <a href="pages/categories/nutrition.html" class="nav-dropdown-link">All Nutrition</a>
+              <a href="pages/categories/nutrition.html?sub=diets" class="nav-dropdown-link">Diets</a>
+              <a href="pages/categories/nutrition.html?sub=supplements" class="nav-dropdown-link">Supplements</a>
+              <a href="pages/categories/nutrition.html?sub=foods" class="nav-dropdown-link">Healthy Foods</a>
+              <a href="pages/categories/nutrition.html?sub=beverages" class="nav-dropdown-link">Beverages</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Fitness
+              <svg class="nav-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M2 4L5 7L8 4"/>
+              </svg>
+            </a>
+            <div class="nav-dropdown">
+              <a href="pages/categories/fitness.html" class="nav-dropdown-link">All Fitness</a>
+              <a href="pages/categories/fitness.html?sub=workouts" class="nav-dropdown-link">Workouts</a>
+              <a href="pages/categories/fitness.html?sub=strength" class="nav-dropdown-link">Strength Training</a>
+              <a href="pages/categories/fitness.html?sub=yoga" class="nav-dropdown-link">Yoga</a>
+              <a href="pages/categories/fitness.html?sub=running" class="nav-dropdown-link">Running</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Mental Health
+              <svg class="nav-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M2 4L5 7L8 4"/>
+              </svg>
+            </a>
+            <div class="nav-dropdown">
+              <a href="pages/categories/mental-health.html" class="nav-dropdown-link">All Mental Health</a>
+              <a href="pages/categories/mental-health.html?sub=anxiety" class="nav-dropdown-link">Anxiety</a>
+              <a href="pages/categories/mental-health.html?sub=depression" class="nav-dropdown-link">Depression</a>
+              <a href="pages/categories/mental-health.html?sub=mindfulness" class="nav-dropdown-link">Mindfulness</a>
+              <a href="pages/categories/mental-health.html?sub=resilience" class="nav-dropdown-link">Resilience</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Wellness
+              <svg class="nav-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M2 4L5 7L8 4"/>
+              </svg>
+            </a>
+            <div class="nav-dropdown">
+              <a href="pages/categories/wellness.html" class="nav-dropdown-link">All Wellness</a>
+              <a href="pages/categories/wellness.html?sub=sleep" class="nav-dropdown-link">Sleep</a>
+              <a href="pages/categories/wellness.html?sub=self-care" class="nav-dropdown-link">Self-Care</a>
+              <a href="pages/categories/wellness.html?sub=hydration" class="nav-dropdown-link">Hydration</a>
+              <a href="pages/categories/wellness.html?sub=lifestyle" class="nav-dropdown-link">Lifestyle</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Conditions
+              <svg class="nav-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M2 4L5 7L8 4"/>
+              </svg>
+            </a>
+            <div class="nav-dropdown">
+              <a href="pages/categories/conditions.html" class="nav-dropdown-link">All Conditions</a>
+              <a href="pages/categories/conditions.html?sub=diabetes" class="nav-dropdown-link">Diabetes</a>
+              <a href="pages/categories/conditions.html?sub=heart" class="nav-dropdown-link">Heart Health</a>
+              <a href="pages/categories/conditions.html?sub=arthritis" class="nav-dropdown-link">Arthritis</a>
+              <a href="pages/categories/conditions.html?sub=autoimmune" class="nav-dropdown-link">Autoimmune</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Lifestyle
+              <svg class="nav-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M2 4L5 7L8 4"/>
+              </svg>
+            </a>
+            <div class="nav-dropdown">
+              <a href="pages/categories/lifestyle.html" class="nav-dropdown-link">All Lifestyle</a>
+              <a href="pages/categories/lifestyle.html?sub=relationships" class="nav-dropdown-link">Relationships</a>
+              <a href="pages/categories/lifestyle.html?sub=productivity" class="nav-dropdown-link">Productivity</a>
+              <a href="pages/categories/lifestyle.html?sub=sustainability" class="nav-dropdown-link">Sustainability</a>
+              <a href="pages/categories/lifestyle.html?sub=travel" class="nav-dropdown-link">Travel</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="header-search">
+        <button class="header-search-toggle" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="M21 21l-4.35-4.35"/>
+          </svg>
+        </button>
+        <form class="header-search-form search-form" action="pages/search-results.html" method="GET">
+          <input type="search" name="q" class="header-search-input" placeholder="Search articles..." autocomplete="off">
+          <div class="search-suggestions"></div>
+        </form>
+      </div>
+      
+      <div class="header-auth" id="header-auth">
+        <a href="pages/signin.html" class="btn btn-outline btn-sm">Sign In</a>
+        <a href="pages/signup.html" class="btn btn-primary btn-sm">Sign Up</a>
+      </div>
+      
+      <button class="mobile-menu-toggle" aria-label="Menu">
+        <span></span>
+      </button>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item">
+          <a href="pages/categories/nutrition.html" class="mobile-nav-link">Nutrition</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="pages/categories/fitness.html" class="mobile-nav-link">Fitness</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="pages/categories/mental-health.html" class="mobile-nav-link">Mental Health</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="pages/categories/wellness.html" class="mobile-nav-link">Wellness</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="pages/categories/conditions.html" class="mobile-nav-link">Conditions</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="pages/categories/lifestyle.html" class="mobile-nav-link">Lifestyle</a>
+        </li>
+      </ul>
+      <div class="mobile-nav-auth" id="mobile-nav-auth">
+        <a href="pages/signin.html" class="btn btn-outline btn-block">Sign In</a>
+        <a href="pages/signup.html" class="btn btn-primary btn-block">Sign Up</a>
+      </div>
+      <div class="mobile-nav-search">
+        <form class="search-form" action="pages/search-results.html" method="GET">
+          <input type="search" name="q" placeholder="Search articles...">
+        </form>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <span class="hero-label">Featured</span>
+          <h1 class="hero-title">10 Science-Backed Benefits of Green Tea</h1>
+          <p class="hero-excerpt">Discover the amazing health benefits of green tea, from improved brain function to weight loss support, backed by scientific research.</p>
+          <div class="hero-meta">
+            <span class="hero-meta-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              Dr. Balu Naik
+            </span>
+            <span class="hero-meta-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              6 min read
+            </span>
+          </div>
+          <a href="pages/articles/article.html?slug=benefits-of-green-tea" class="btn btn-primary btn-lg mt-lg">Read Article</a>
+        </div>
+        <div class="hero-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1556881286-fc6915169721?w=800&h=600&fit=crop" alt="Green tea in a cup with tea leaves" class="hero-image">
+          <div class="hero-image-badge">
+            <span>Nutrition</span>
+            <strong>Popular</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trending Section -->
+    <section class="trending-section section">
+      <div class="container">
+        <div class="trending-header">
+          <h2 class="trending-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+              <polyline points="17 6 23 6 23 12"/>
+            </svg>
+            Trending Now
+          </h2>
+          <a href="pages/search-results.html" class="btn btn-outline">View All</a>
+        </div>
+        <div class="trending-grid">
+          <article class="trending-card">
+            <a href="pages/articles/article.html?slug=hiit-workouts-beginners-guide">
+              <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=800&h=600&fit=crop" alt="HIIT workout" class="trending-card-image">
+            </a>
+            <div class="trending-card-content">
+              <span class="trending-card-category">Fitness</span>
+              <h3 class="trending-card-title">
+                <a href="pages/articles/article.html?slug=hiit-workouts-beginners-guide">HIIT Workouts: Complete Guide for Beginners</a>
+              </h3>
+              <span class="trending-card-meta">7 min read</span>
+            </div>
+          </article>
+          
+          <article class="trending-card">
+            <a href="pages/articles/article.html?slug=managing-anxiety-strategies">
+              <img src="https://images.unsplash.com/photo-1493836512294-502baa1986e2?w=800&h=600&fit=crop" alt="Managing anxiety" class="trending-card-image">
+            </a>
+            <div class="trending-card-content">
+              <span class="trending-card-category">Mental Health</span>
+              <h3 class="trending-card-title">
+                <a href="pages/articles/article.html?slug=managing-anxiety-strategies">Managing Anxiety: 10 Effective Strategies</a>
+              </h3>
+              <span class="trending-card-meta">7 min read</span>
+            </div>
+          </article>
+          
+          <article class="trending-card">
+            <a href="pages/articles/article.html?slug=sleep-hygiene-tips-better-rest">
+              <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=800&h=600&fit=crop" alt="Sleep hygiene" class="trending-card-image">
+            </a>
+            <div class="trending-card-content">
+              <span class="trending-card-category">Wellness</span>
+              <h3 class="trending-card-title">
+                <a href="pages/articles/article.html?slug=sleep-hygiene-tips-better-rest">Sleep Hygiene: 12 Tips for Better Rest</a>
+              </h3>
+              <span class="trending-card-meta">6 min read</span>
+            </div>
+          </article>
+          
+          <article class="trending-card">
+            <a href="pages/articles/article.html?slug=understanding-type-2-diabetes">
+              <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=600&fit=crop" alt="Type 2 diabetes" class="trending-card-image">
+            </a>
+            <div class="trending-card-content">
+              <span class="trending-card-category">Conditions</span>
+              <h3 class="trending-card-title">
+                <a href="pages/articles/article.html?slug=understanding-type-2-diabetes">Understanding Type 2 Diabetes</a>
+              </h3>
+              <span class="trending-card-meta">8 min read</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="category-section section">
+      <div class="container">
+        <div class="category-header">
+          <h2>Explore by Category</h2>
+          <p>Browse our comprehensive health content organized by topic</p>
+        </div>
+        <div class="category-grid">
+          <a href="pages/categories/nutrition.html" class="category-card">
+            <div class="category-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                <line x1="6" y1="1" x2="6" y2="4"/>
+                <line x1="10" y1="1" x2="10" y2="4"/>
+                <line x1="14" y1="1" x2="14" y2="4"/>
+              </svg>
+            </div>
+            <h3 class="category-card-title">Nutrition</h3>
+            <span class="category-card-count">6 articles</span>
+          </a>
+          
+          <a href="pages/categories/fitness.html" class="category-card">
+            <div class="category-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6.5 6.5L17.5 17.5"/>
+                <path d="M3 10L6.5 6.5L10 10"/>
+                <path d="M14 14L17.5 17.5L21 14"/>
+                <rect x="2" y="9" width="4" height="6" rx="1"/>
+                <rect x="18" y="9" width="4" height="6" rx="1"/>
+              </svg>
+            </div>
+            <h3 class="category-card-title">Fitness</h3>
+            <span class="category-card-count">6 articles</span>
+          </a>
+          
+          <a href="pages/categories/mental-health.html" class="category-card">
+            <div class="category-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2a10 10 0 1 0 10 10"/>
+                <path d="M12 12V6"/>
+                <path d="M12 12L16 14"/>
+                <circle cx="12" cy="12" r="1"/>
+              </svg>
+            </div>
+            <h3 class="category-card-title">Mental Health</h3>
+            <span class="category-card-count">6 articles</span>
+          </a>
+          
+          <a href="pages/categories/wellness.html" class="category-card">
+            <div class="category-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <h3 class="category-card-title">Wellness</h3>
+            <span class="category-card-count">6 articles</span>
+          </a>
+          
+          <a href="pages/categories/conditions.html" class="category-card">
+            <div class="category-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </div>
+            <h3 class="category-card-title">Conditions</h3>
+            <span class="category-card-count">6 articles</span>
+          </a>
+          
+          <a href="pages/categories/lifestyle.html" class="category-card">
+            <div class="category-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+            <h3 class="category-card-title">Lifestyle</h3>
+            <span class="category-card-count">6 articles</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Articles Section -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Editor's Picks</h2>
+        <div class="article-grid">
+          <article class="card">
+            <a href="pages/articles/article.html?slug=mediterranean-diet-beginners-guide">
+              <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&h=600&fit=crop" alt="Mediterranean diet" class="card-image">
+            </a>
+            <div class="card-content">
+              <span class="card-category">Nutrition</span>
+              <h3 class="card-title">
+                <a href="pages/articles/article.html?slug=mediterranean-diet-beginners-guide">Mediterranean Diet: A Beginner's Guide</a>
+              </h3>
+              <p class="card-excerpt">Learn about the Mediterranean diet, one of the healthiest eating patterns backed by decades of research.</p>
+              <div class="card-meta">
+                <span class="card-meta-item">Dr. Maria Santos</span>
+                <span class="card-meta-item">7 min read</span>
+              </div>
+            </div>
+          </article>
+          
+          <article class="card">
+            <a href="pages/articles/article.html?slug=building-healthy-relationships">
+              <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&h=600&fit=crop" alt="Healthy relationships" class="card-image">
+            </a>
+            <div class="card-content">
+              <span class="card-category">Lifestyle</span>
+              <h3 class="card-title">
+                <a href="pages/articles/article.html?slug=building-healthy-relationships">Building Healthy Relationships</a>
+              </h3>
+              <p class="card-excerpt">Learn the key ingredients for building and maintaining healthy, fulfilling relationships.</p>
+              <div class="card-meta">
+                <span class="card-meta-item">Dr. Laura Martinez</span>
+                <span class="card-meta-item">7 min read</span>
+              </div>
+            </div>
+          </article>
+          
+          <article class="card">
+            <a href="pages/articles/article.html?slug=strength-training-women-myths">
+              <img src="https://images.unsplash.com/photo-1594737626072-90dc274bc2bd?w=800&h=600&fit=crop" alt="Strength training for women" class="card-image">
+            </a>
+            <div class="card-content">
+              <span class="card-category">Fitness</span>
+              <h3 class="card-title">
+                <a href="pages/articles/article.html?slug=strength-training-women-myths">Strength Training for Women: Myths Debunked</a>
+              </h3>
+              <p class="card-excerpt">Don't let myths hold you back from lifting weights. Here's the truth about strength training.</p>
+              <div class="card-meta">
+                <span class="card-meta-item">Amanda Lee</span>
+                <span class="card-meta-item">6 min read</span>
+              </div>
+            </div>
+          </article>
+          
+          <article class="card">
+            <a href="pages/articles/article.html?slug=heart-health-prevention">
+              <img src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=800&h=600&fit=crop" alt="Heart health" class="card-image">
+            </a>
+            <div class="card-content">
+              <span class="card-category">Conditions</span>
+              <h3 class="card-title">
+                <a href="pages/articles/article.html?slug=heart-health-prevention">Heart Health: Prevention and Risk Factors</a>
+              </h3>
+              <p class="card-excerpt">Protect your heart with this guide to cardiovascular disease prevention and risk reduction.</p>
+              <div class="card-meta">
+                <span class="card-meta-item">Dr. William Chen</span>
+                <span class="card-meta-item">7 min read</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section section-light">
+      <div class="container container-narrow">
+        <div class="newsletter-box">
+          <h3>Stay Informed About Your Health</h3>
+          <p>Get the latest health tips, research updates, and wellness advice delivered to your inbox weekly.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); handleNewsletterSubmit(this);">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <svg class="footer-logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="18" stroke="white" stroke-width="3"/>
+              <path d="M20 8C20 8 12 14 12 22C12 26.4183 15.5817 30 20 30C24.4183 30 28 26.4183 28 22C28 14 20 8 20 8Z" fill="white"/>
+              <path d="M20 14V26M16 20H24" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            HealthlineClone
+          </a>
+          <p class="footer-description">Your trusted source for health information, nutrition tips, fitness advice, and wellness guidance. We're committed to helping you live a healthier life.</p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#1F1F1F"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="pages/categories/nutrition.html" class="footer-link">Nutrition</a></li>
+            <li><a href="pages/categories/fitness.html" class="footer-link">Fitness</a></li>
+            <li><a href="pages/categories/mental-health.html" class="footer-link">Mental Health</a></li>
+            <li><a href="pages/categories/wellness.html" class="footer-link">Wellness</a></li>
+            <li><a href="pages/categories/conditions.html" class="footer-link">Conditions</a></li>
+            <li><a href="pages/categories/lifestyle.html" class="footer-link">Lifestyle</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">About Us</a></li>
+            <li><a href="#" class="footer-link">Our Team</a></li>
+            <li><a href="#" class="footer-link">Careers</a></li>
+            <li><a href="#" class="footer-link">Contact</a></li>
+            <li><a href="#" class="footer-link">Advertise</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column footer-newsletter">
+          <h4>Newsletter</h4>
+          <p>Subscribe to get the latest health tips and updates.</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2024 Healthline Clone. All rights reserved. This is a demo project.</p>
+        <div class="footer-legal">
+          <a href="#" class="footer-legal-link">Privacy Policy</a>
+          <a href="#" class="footer-legal-link">Terms of Service</a>
+          <a href="#" class="footer-legal-link">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>
