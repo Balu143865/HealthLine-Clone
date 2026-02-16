@@ -28,6 +28,10 @@
     font-weight: 600;
     color: var(--admin-text-dark);
 }
+/* Special container for horizontal bar chart - needs more height */
+.chart-container.bar-chart {
+    height: 280px;
+}
 @media (max-width: 992px) {
     .chart-grid {
         grid-template-columns: 1fr;
@@ -35,7 +39,10 @@
 }
 @media (max-width: 768px) {
     .chart-container {
-        height: 220px;
+        height: 250px;
+    }
+    .chart-container.bar-chart {
+        height: 320px;
     }
     .chart-grid {
         gap: 16px;
@@ -51,7 +58,10 @@
 }
 @media (max-width: 480px) {
     .chart-container {
-        height: 180px;
+        height: 220px;
+    }
+    .chart-container.bar-chart {
+        height: 280px;
     }
     .chart-card {
         padding: 10px;
@@ -155,7 +165,7 @@
     <!-- Top Viewed Articles -->
     <div class="chart-card">
         <h3>Top Viewed Articles</h3>
-        <div class="chart-container">
+        <div class="chart-container bar-chart">
             <canvas id="viewsChart"></canvas>
         </div>
     </div>
@@ -363,7 +373,27 @@ new Chart(viewsCtx, {
         },
         scales: {
             x: {
-                beginAtZero: true
+                beginAtZero: true,
+                ticks: {
+                    font: {
+                        size: window.innerWidth < 480 ? 10 : 12
+                    }
+                }
+            },
+            y: {
+                ticks: {
+                    font: {
+                        size: window.innerWidth < 480 ? 10 : 12
+                    },
+                    callback: function(value, index, values) {
+                        const label = this.getLabelForValue(value);
+                        // Truncate long labels on mobile
+                        if (window.innerWidth < 480 && label.length > 15) {
+                            return label.substring(0, 15) + '...';
+                        }
+                        return label;
+                    }
+                }
             }
         }
     }
